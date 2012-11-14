@@ -36,7 +36,7 @@ table{border-collapse: collapse;}
 	transform:skewX(30deg) rotate(-30deg);
 	-ms-transform:skewX(30deg) rotate(-30deg); /* IE 9 */
 	-moz-transform:skewX(30deg) rotate(-30deg); /* Firefox */
-	-webkit-transform:rotate(-27deg) skewX(38deg); /* Safari and Chrome */
+	-webkit-transform:rotate(-26deg) skewX(38deg); /* Safari and Chrome */
 	-o-transform:skewX(30deg) rotate(-30deg); /* Opera */
 
 }
@@ -49,7 +49,7 @@ table{
 	
 }
 td{
-	width:36px;
-	height:36px;
+	width:35px;
+	height:28px;
 	border:1px solid white;
 }

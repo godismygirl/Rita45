@@ -21,6 +21,9 @@ function crMap(oMap){
 			actGrid.appendChild(tr.cloneNode(true));
 		}
 		sourse.layer_act.appendChild(actGrid)
+
+		sourse.layer_act.style.left = SienaGorge.LEFT + 'px';
+		sourse.layer_act.style.top = SienaGorge.TOP + 'px';
 	}
 
 	function init(){
@@ -38,6 +41,8 @@ var SienaGorge = {
 	SRC : 'url(images/SienaGorge.png)',
 	TD_SIZE : 11,
 	TR_SIZE : 15,
+	LEFT:312,
+	TOP:352,
 	BLOCK : [0,1,9,10, 11,12, 22, 36,40, 41,50, 51,52,60, 61,62, 75, 91, 101,107,108,109,110, 111,112,113,117,118,119,120, 121,122,123,128,129,130, 131,132,133,137,138,139,140, 141,142,143,144,145,148,149,150],
 	ELEVATION_01 : [],
 	ELEVATION_02 : [],
