@@ -1,0 +1,55 @@
+*{margin:0;padding:0;}
+html{height: 100%;}
+body{
+	height: 100%;
+	background-color:#f9f9f9; 
+}
+table{border-collapse: collapse;}
+#VIEW{
+	width: 1000px;
+	height: 600px;
+	overflow: hidden;
+	position: absolute;
+	top:50%;
+	left: 50%;
+	margin-top:-300px;
+	margin-left: -500px;
+	border:1px solid black; 
+}
+#FRAME{
+	width:1600px;
+	height: 900px;
+	position: absolute;
+	background-image: linear-gradient(bottom, #addef8, #dff2fc);
+	background-image: -webkit-linear-gradient(bottom, #addef8, #dff2fc);
+	background-image: -moz-linear-gradient(bottom, #addef8, #dff2fc);
+	background-image: -ms-linear-gradient(bottom, #addef8, #dff2fc);
+}
+#FRAME>div{
+	position: absolute;
+}
+#LAYER_MENU{
+	z-index: 3;
+}
+#LAYER_ACT{
+	z-index: 2;
+	transform:skewX(30deg) rotate(-30deg);
+	-ms-transform:skewX(30deg) rotate(-30deg); /* IE 9 */
+	-moz-transform:skewX(30deg) rotate(-30deg); /* Firefox */
+	-webkit-transform:rotate(-27deg) skewX(38deg); /* Safari and Chrome */
+	-o-transform:skewX(30deg) rotate(-30deg); /* Opera */
+
+}
+#LAYER_BG{	
+	z-index: 1;
+
+}
+
+table{
+	
+}
+td{
+	width:36px;
+	height:36px;
+	border:1px solid white;
+}
