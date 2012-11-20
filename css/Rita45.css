@@ -53,14 +53,75 @@ td{
 	border:1px solid white;
 }
 td.BLOCK{
-	background-color: black;
-	opacity: 0.6;
+	1background-color: black;
+	1opacity: 0.5;
 }
-td.ELEVATION_1{
+[class*="ELEVATION"]{
+	position: relative;
+	opacity: 0.4;
+}
+.ELEVATION_1{
 	background-color: red;
-	opacity: 0.3;
+	bottom:15px;
+	left:17px;
 }
-td.ELEVATION_2{
-	background-color: yellow;
-	opacity: 0.3;
+.ELEVATION_2{
+	background-color: blue;
+	bottom:30px;
+	left:35px;
+}
+.ELEVATION_3{
+	background-color: red;
+	bottom:45px;
+	left:57px;
+}
+.ELEVATION_4{
+	background-color: blue;
+	bottom:59px;
+	left:73px;
+}
+.ELEVATION_5{
+	background-color: red;
+	bottom:75px;
+	left:92px;
+}
+.ELEVATION_6{
+	background-color: blue;
+	bottom:89px;
+	left:110px;
+}
+.ELEVATION_7{
+	background-color: red;
+	bottom:104px;
+	left:130px;
+}
+.ELEVATION_8{
+	background-color: blue;
+	bottom:119px;
+	left:147px;
+}
+.ELEVATION_9{
+	background-color: red;
+	bottom:134px;
+	left:166px;
+}
+.ELEVATION_10{
+	background-color: blue;
+	bottom:148px;
+	left:184px;
+}
+.ELEVATION_11{
+	background-color: red;
+	bottom:163px;
+	left:204px;
+}
+.ELEVATION_12{
+	background-color: blue;
+	bottom:178px;
+	left:222px;
+}
+.ELEVATION_13{
+	background-color: red;
+	bottom:192px;
+	left:240px;
 }
