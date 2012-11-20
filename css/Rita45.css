@@ -41,87 +41,85 @@ table{border-collapse: collapse;}
 }
 
 #LAYER_ACT table{
-	transform:skewX(30deg) rotate(-30deg);
-	-ms-transform:skewX(30deg) rotate(-30deg); /* IE 9 */
-	-moz-transform:skewX(30deg) rotate(-30deg); /* Firefox */
+	transform:skewX(-26deg) rotate(38deg);
+	-ms-transform:skewX(-26deg) rotate(38deg); /* IE 9 */
+	-moz-transform:skewX(-26deg) rotate(38deg); /* Firefox */
 	-webkit-transform:rotate(-26deg) skewX(38deg); /* Safari and Chrome */
-	-o-transform:skewX(30deg) rotate(-30deg); /* Opera */
+	-o-transform:skewX(-26deg) rotate(38deg); /* Opera */
 }
 td{
 	width:35px;
 	height:27px;
-	border:1px solid white;
+	border:1px solid transparent;
 }
-td.BLOCK{
-	1background-color: black;
-	1opacity: 0.5;
-}
+
 [class*="ELEVATION"]{
 	position: relative;
-	opacity: 0.4;
+	background-color: red;
+	opacity: 0.5;
 }
 .ELEVATION_1{
-	background-color: red;
+	z-index:1;
 	bottom:15px;
 	left:17px;
 }
 .ELEVATION_2{
-	background-color: blue;
+	z-index:2;
 	bottom:30px;
 	left:35px;
 }
 .ELEVATION_3{
-	background-color: red;
+	z-index:3;
 	bottom:45px;
 	left:57px;
 }
 .ELEVATION_4{
-	background-color: blue;
+	z-index:4;
 	bottom:59px;
 	left:73px;
 }
 .ELEVATION_5{
-	background-color: red;
+	z-index:5;
 	bottom:75px;
 	left:92px;
 }
 .ELEVATION_6{
-	background-color: blue;
+	z-index:6;
 	bottom:89px;
 	left:110px;
 }
 .ELEVATION_7{
-	background-color: red;
+	z-index:7;
 	bottom:104px;
-	left:130px;
+	left:131px;
 }
 .ELEVATION_8{
-	background-color: blue;
+	z-index:8;
 	bottom:119px;
 	left:147px;
 }
 .ELEVATION_9{
-	background-color: red;
+	z-index:9;
 	bottom:134px;
 	left:166px;
 }
 .ELEVATION_10{
-	background-color: blue;
+	z-index:10;
 	bottom:148px;
-	left:184px;
+	left:186px;
 }
 .ELEVATION_11{
-	background-color: red;
+	z-index:11;
 	bottom:163px;
 	left:204px;
 }
 .ELEVATION_12{
-	background-color: blue;
+	z-index:12;
 	bottom:178px;
 	left:222px;
 }
 .ELEVATION_13{
-	background-color: red;
+	z-index:13;
 	bottom:192px;
 	left:240px;
 }
