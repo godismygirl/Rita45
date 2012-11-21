@@ -40,7 +40,7 @@ table{border-collapse: collapse;}
 	z-index: 1;
 }
 
-#LAYER_ACT table{
+table{
 	transform:skewX(-26deg) rotate(38deg);
 	-ms-transform:skewX(-26deg) rotate(38deg); /* IE 9 */
 	-moz-transform:skewX(-26deg) rotate(38deg); /* Firefox */
