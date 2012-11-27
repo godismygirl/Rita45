@@ -1,8 +1,35 @@
-function loadChar(){
+function loadChar(sMapID){
+	var char = chars[sMapID];	
+	var ally = {
+		setPosition : function(){
 
+		},
+		setAttr : function(){
+
+		},
+		setAction : function(){
+
+		},
+		init : function(){
+			ally.setPosition();
+			ally.setAttr();
+			ally.setAction();
+		}
+	};
+
+	var enemy = {
+		
+	};
+
+	function init(){
+		ally.init();
+		enemy.init();
+	}
+
+	init();
 }
 
-var mapChar = {
+var chars = {
 	SienaGorge : {
 		ally : [
 			{
@@ -11,11 +38,11 @@ var mapChar = {
 				name : 'JK_Rose',
 				position : [13,4],
 				level : 5,
-				equip_01 : ['WE001'],
-				equip_02 : ['AR001'],
-				equip_03 : ['SH001'],
-				equip_04 : ['AC002'],
-				equip_05 : ['AC001'],
+				equip_01 : 'WE001',
+				equip_02 : 'AR001',
+				equip_03 : 'SH001',
+				equip_04 : 'AC002',
+				equip_05 : 'AC001',
 				item : ['IT001','IT002'],
 				skill : ['SK001','SK002']
 			},
@@ -26,11 +53,11 @@ var mapChar = {
 				name : 'Shara',
 				position : [13,5],
 				level : 4,
-				equip_01 : ['WE001'],
-				equip_02 : ['AR001'],
-				equip_03 : ['SH001'],
-				equip_04 : ['AC002'],
-				equip_05 : ['AC001'],
+				equip_01 : 'WE001',
+				equip_02 : 'AR001',
+				equip_03 : 'SH001',
+				equip_04 : 'AC002',
+				equip_05 : 'AC001',
 				item : ['IT001','IT002'],
 				skill : ['SK001','SK002']
 			}
@@ -69,3 +96,4 @@ var mapChar = {
 var sniper = {
 	src : 'url(images/sniper.png)',
 }
+
