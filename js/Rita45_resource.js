@@ -6,59 +6,144 @@ var sourse = {
 	layer_menu : document.getElementById('LAYER_MENU')
 }
 
-var state = {
+var DATA = {};
 
+var party = {
+	S01 : {
+		race : 'aivera',
+		job : 'unique',
+		name : 'Shara',
+		level : 4,
+		EXP:80,
+		ATK : 21,
+		DEF : 6,
+		MATK : 18,
+		MDEF :7,
+		equip_01 : 'WE001',
+		equip_02 : 'AR001',
+		equip_03 : 'SH001',
+		equip_04 : 'AC002',
+		equip_05 : 'AC001',
+		item : ['IT001','IT002'],
+		skill : ['SK001','SK002']
+	},
+
+	N02 : {
+		race : 'aivera',
+		job : 'sniper',
+		name : 'JK Rose',
+		level : 5,
+		EXP:22,
+		ATK : 20,
+		DEF : 8,
+		MATK : 12,
+		MDEF :6,
+		equip_01 : 'WE001',
+		equip_02 : 'AR001',
+		equip_03 : 'SH001',
+		equip_04 : 'AC002',
+		equip_05 : 'AC001',
+		item : ['IT001','IT002'],
+		skill : ['SK001','SK002']
+	}	
 }
 
-var weapon = {
+var store = {
+	weapon : {
+		WE001 : 2,
+		WE002 : 1
+	},
+	armor : {
+		AR001 : 1,
+		AR002 : 1
+	},
+	shield : {
+		SH001 : 1,
+		SH002 : 1
+	},
+	accessory : {
+		AC001 : 1,
+		AC002 : 2
+	}
+}
+
+DATA.weapon = {
 	WE001 : {
 		name : 'Iron Sword',
 		legend : 'Common sword made by iron',
 		tip : '+15 ATK',
-		attack : 15,
-	}
-};
+		effect : function(){
+			
+		}
+	},
+	WE002 : {
+		name : 'Steel Sword',
+		legend : 'Sharp sword made by steel',
+		tip : '+18 ATK',
+		effect : function(){
+			
+		}
+	},
+}
 
-var armor = {
+DATA.armor = {
 	AR001 : {
 		name : 'Iron Armor',
 		legend : 'Common armor made by iron',
 		tip : '+8 DEF',
-		defense : 8,
+		effect : function(){
+			
+		}
+	},
+	AR002 : {
+		name : 'Steel Armor',
+		legend : 'Good armor made by iron',
+		tip : '+10 DEF',
+		effect : function(){
+			
+		}
 	}
 }
 
-var shield = {
+DATA.shield = {
 	SH001 : {
 		name : 'Iron shield',
 		legend : 'Common shield made by iron',
 		tip : '+5 DEF',
-		defense : 5,
+		effect : function(){
+			
+		}
+	},
+	SH002 : {
+		name : 'Hero shield',
+		legend : 'Shield belongs to an ancient hero',
+		tip : '+10 DEF',
+		effect : function(){
+			
+		}
 	}
 }
 
-var accessory = {
+DATA.accessory = {
 	AC001 : {
 		name : 'Swift Necklace',
 		legend : 'A gift necklace from wind fairy',
 		tip : '+2 SPD -2 DEF',
-		effect : {
-			speed : +2,
-			defense : -2
+		effect : function(){
+
 		}
 	},
 	AC002 : {
 		name : 'Swift Earring',
 		legend : 'A gift earring from wind fairy',
 		tip : '+3 SPD -3 DEF',
-		effect : {
-			speed : +3,
-			defense : -3
+		effect : function(){
+			
 		}
 	}
 }
 
-var item = {
+DATA.item = {
 	IT001 : {
 		name : "Angel's Tear",
 		legend : 'The essence of angel tear',
@@ -77,7 +162,7 @@ var item = {
 	}
 }
 
-var skills = {
+DATA.skills = {
 	SK001 : {
 		name : 'Fast Aid',
 		legend : 'Hemostatic skill probably learned in army',
@@ -94,6 +179,10 @@ var skills = {
 
 		}
 	}
+}
+
+DATA.action = {
+	
 }
 
 function crFrame(){
