@@ -1,24 +1,37 @@
-var sourse = {
-	view : document.getElementById('VIEW'),
-	frame : document.getElementById('FRAME'),
-	layer_bg :document.getElementById('LAYER_BG'),
-	layer_act : document.getElementById('LAYER_ACT'),
-	layer_menu : document.getElementById('LAYER_MENU')
-}
-
 var DATA = {};
 
 var party = {
-	S01 : {
-		race : 'aivera',
-		job : 'unique',
-		name : 'Shara',
+	N01 : {
+		action_ID : 'C001',
+		race : 'Human',
+		job : 'Fighter',
+		name : 'Marche',
+		level : 3,
+		EXP:45,
+		ATK : 12,
+		DEF : 6,
+		MATK : 5,
+		MDEF :2,
+		equip_01 : 'WE001',
+		equip_02 : 'AR001',
+		equip_03 : 'SH001',
+		equip_04 : 'HE001',
+		equip_05 : 'AC001',
+		item : ['IT001','IT002'],
+		skill : ['SK001','SK002']
+	},
+
+	N02 : {
+		action_ID : 'C002',
+		race : 'Human',
+		job : 'Black Mage',
+		name : 'JK.Love',
 		level : 4,
 		EXP:80,
-		ATK : 21,
-		DEF : 6,
+		ATK : 8,
+		DEF : 4,
 		MATK : 18,
-		MDEF :7,
+		MDEF :8,
 		equip_01 : 'WE001',
 		equip_02 : 'AR001',
 		equip_03 : 'SH001',
@@ -28,7 +41,7 @@ var party = {
 		skill : ['SK001','SK002']
 	},
 
-	N02 : {
+	N03 : {
 		race : 'aivera',
 		job : 'sniper',
 		name : 'JK Rose',
@@ -67,6 +80,14 @@ var store = {
 	}
 }
 
+DATA.html = {
+	view : document.getElementById('VIEW'),
+	frame : document.getElementById('FRAME'),
+	layer_bg :document.getElementById('LAYER_BG'),
+	layer_act : document.getElementById('LAYER_ACT'),
+	layer_menu : document.getElementById('LAYER_MENU')
+}
+
 DATA.weapon = {
 	WE001 : {
 		name : 'Iron Sword',
@@ -80,6 +101,25 @@ DATA.weapon = {
 		name : 'Steel Sword',
 		legend : 'Sharp sword made by steel',
 		tip : '+18 ATK',
+		effect : function(){
+			
+		}
+	},
+}
+
+DATA.helm = {
+	HE001 : {
+		name : 'Iron Helm',
+		legend : 'Common helm made by iron',
+		tip : '+3 DEF',
+		effect : function(){
+			
+		}
+	},
+	HE002 : {
+		name : 'Brone Helm',
+		legend : 'Careful made helm provide better protect',
+		tip : '+6 DEF',
 		effect : function(){
 			
 		}
@@ -182,12 +222,99 @@ DATA.skills = {
 }
 
 DATA.action = {
-	
+	//citizen
+	C001 : {
+		src : 'url(images/Marche.png)',
+		getInstance : function(face){
+			var div = document.createElement('div');
+			div.style.id = 'C001';
+			div.style.width = 32 + 'px';
+			div.style.height = 62 + 'px';
+			div.style.backgroundImage = DATA.action.C001.src;
+			
+			switch (face){
+				case 'up' : 
+					div.style.backgroundPosition = '-102px -362px'
+					break
+				case 'down' : 
+					div.style.backgroundPosition = '-102px -66px'
+					break 
+				case 'left' : 
+					div.style.backgroundPosition = '-102px -152px'
+					break
+				case 'right' : 
+					div.style.backgroundPosition = '-102px -256px'
+					break
+				default : 
+			}
+
+			return div; 
+		},
+		getAvatar : function(sFace){
+			var div = document.createElement('div');
+			div.style.width = 94 + 'px';
+			div.style.height = 128 + 'px';
+			div.style.backgroundImage = DATA.action.C001.src;
+			div.style.backgroundPosition = '-4px -428px';
+			return div;
+		}
+
+	},
+	C002 : {
+		src : 'url(images/BlackMage.png)',
+		getInstance : function(face){
+			var div = document.createElement('div');
+			div.style.id = 'C002';
+			div.style.width = 32 + 'px';
+			div.style.height = 60 + 'px';
+			div.style.backgroundImage = DATA.action.C002.src;
+			
+			switch (face){
+				case 'up' : 
+					div.style.backgroundPosition = '-44px -366px'
+					break
+				case 'down' : 
+					div.style.backgroundPosition = '-44px -68px'
+					break 
+				case 'left' : 
+					div.style.backgroundPosition = '-44px -154px'
+					break
+				case 'right' : 
+					div.style.backgroundPosition = '-44px -258px'
+					break
+				default : 
+			}
+
+			return div; 
+		},
+		getAvatar : function(sFace){
+			var div = document.createElement('div');
+			div.style.width = 126 + 'px';
+			div.style.height = 176 + 'px';
+			div.style.backgroundImage = DATA.action.C002.src;
+			div.style.backgroundPosition = '-6px -430px';
+			return div;
+		}
+
+	},
+	//moster
+	M001 : {
+		src : 'url(images/Malboro.png)',
+		getAvatar : function(){
+			var div = document.createElement('div');
+			div.style.width = 118 + 'px';
+			div.style.height = 162 + 'px';
+			div.style.backgroundImage = DATA.action.M01.src;
+			div.style.backgroundPosition = '0px -132px';
+			return div;
+		}
+
+	}
 }
 
 function crFrame(){
-	var view = sourse.view;
-	var map = sourse.frame;
+	var view = DATA.html.view;
+	var map = DATA.html.frame;
 	var dtX,dtY;
 	function dragOn(event){
 		dtX = event.clientX - map.offsetLeft;

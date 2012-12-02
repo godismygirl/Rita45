@@ -2,13 +2,13 @@ function loadMap(sMapID){
 	var map = maps[sMapID];
 	var grid;
 	var defaults = {
-		width : sourse.view.clientWidth,
-		height : sourse.view.clientHeight,
+		width : DATA.html.view.clientWidth,
+		height : DATA.html.view.clientHeight,
 		SRC : 'url(images/error.png)'
 	}
 
-	sourse.frame.style.width = map.WIDTH + 'px' || defaults.width + 'px';
-	sourse.frame.style.height = map.HEIGHT + 'px' || defaults.height + 'px';
+	DATA.html.frame.style.width = map.WIDTH + 'px' || defaults.width + 'px';
+	DATA.html.frame.style.height = map.HEIGHT + 'px' || defaults.height + 'px';
 
 	function crLayerAct(){
 		grid = document.createElement('table');
@@ -20,9 +20,9 @@ function loadMap(sMapID){
 		for(var i = 0,len = map.TR_SIZE; i < len; i++){
 			grid.appendChild(tr.cloneNode(true));
 		}
-		sourse.layer_act.appendChild(grid)
-		sourse.layer_act.style.left = map.LEFT + 'px';
-		sourse.layer_act.style.top = map.TOP + 'px';
+		DATA.html.layer_act.appendChild(grid)
+		DATA.html.layer_act.style.left = map.LEFT + 'px';
+		DATA.html.layer_act.style.top = map.TOP + 'px';
 	}
 
 	function setBlock(){
@@ -45,9 +45,9 @@ function loadMap(sMapID){
 	}
 
 	function init(){
-		sourse.layer_bg.style.width = map.WIDTH + 'px' || defaults.width + 'px';
-		sourse.layer_bg.style.height = map.HEIGHT + 'px' || defaults.height + 'px';
-		sourse.layer_bg.style.backgroundImage = map.SRC || defaults.SRC;
+		DATA.html.layer_bg.style.width = map.WIDTH + 'px' || defaults.width + 'px';
+		DATA.html.layer_bg.style.height = map.HEIGHT + 'px' || defaults.height + 'px';
+		DATA.html.layer_bg.style.backgroundImage = map.SRC || defaults.SRC;
 		crLayerAct();
 		setBlock();
 		setElevation();

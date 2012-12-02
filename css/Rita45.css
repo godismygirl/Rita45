@@ -34,6 +34,10 @@ table{border-collapse: collapse;}
 #LAYER_ACT{
 	z-index: 2;
 }
+	#LAYER_ACT div{
+		z-index: 1;
+		position: absolute;
+	}
 #LAYER_BG{	
 	z-index: 1;
 }

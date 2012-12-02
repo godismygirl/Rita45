@@ -1,3 +1,3 @@
 crFrame();
 loadMap('SienaGorge');
-loadChar('SienaGorge')
+loadChar('SienaGorge');
