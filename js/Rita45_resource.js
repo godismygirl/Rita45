@@ -12,6 +12,8 @@ var party = {
 		DEF : 6,
 		MATK : 5,
 		MDEF :2,
+		JAMP : 3,
+		MOVE : 5,
 		equip_01 : 'WE001',
 		equip_02 : 'AR001',
 		equip_03 : 'SH001',
@@ -32,6 +34,8 @@ var party = {
 		DEF : 4,
 		MATK : 18,
 		MDEF :8,
+		JAMP : 2,
+		MOVE : 4,
 		equip_01 : 'WE001',
 		equip_02 : 'AR001',
 		equip_03 : 'SH001',
@@ -225,6 +229,7 @@ DATA.action = {
 	//citizen
 	C001 : {
 		src : 'url(images/Marche.png)',
+		offset : { left : 30, top : -40 },
 		getInstance : function(face){
 			var div = document.createElement('div');
 			div.style.id = 'C001';
@@ -234,34 +239,52 @@ DATA.action = {
 			
 			switch (face){
 				case 'up' : 
-					div.style.backgroundPosition = '-102px -362px'
+					div.style.backgroundPosition = '-142px -362px'
 					break
 				case 'down' : 
-					div.style.backgroundPosition = '-102px -66px'
+					div.style.backgroundPosition = '-142px -66px'
 					break 
 				case 'left' : 
-					div.style.backgroundPosition = '-102px -152px'
+					div.style.backgroundPosition = '-142px -152px'
 					break
 				case 'right' : 
-					div.style.backgroundPosition = '-102px -256px'
+					div.style.backgroundPosition = '-142px -256px'
 					break
 				default : 
 			}
 
 			return div; 
 		},
-		getAvatar : function(sFace){
+		getAvatar : function(){
 			var div = document.createElement('div');
 			div.style.width = 94 + 'px';
 			div.style.height = 128 + 'px';
 			div.style.backgroundImage = DATA.action.C001.src;
 			div.style.backgroundPosition = '-4px -428px';
 			return div;
+		},
+		setStatus : function(status){
+			switch (status){
+				case 'hit' :
+					break
+				case 'hurt' : 
+					break
+				case 'die' :
+					break
+			}
+		}, 
+		walk : function(face){
+
+		},
+		jump : function(face){
+
 		}
+
 
 	},
 	C002 : {
 		src : 'url(images/BlackMage.png)',
+		offset : { left : 26, top : -36 },
 		getInstance : function(face){
 			var div = document.createElement('div');
 			div.style.id = 'C002';

@@ -12,6 +12,7 @@ function loadMap(sMapID){
 
 	function crLayerAct(){
 		grid = document.createElement('table');
+		grid.id = "ACTION_GRID";
 		var td = document.createElement('td');
 		var tr = document.createElement('tr');
 		for(var i = 0,len = map.TD_SIZE; i < len; i++){
@@ -21,8 +22,8 @@ function loadMap(sMapID){
 			grid.appendChild(tr.cloneNode(true));
 		}
 		DATA.html.layer_act.appendChild(grid)
-		DATA.html.layer_act.style.left = map.LEFT + 'px';
-		DATA.html.layer_act.style.top = map.TOP + 'px';
+		DATA.html.layer_act.style.left = map.MAP_OFFSET.left + 'px';
+		DATA.html.layer_act.style.top = map.MAP_OFFSET.top + 'px';
 	}
 
 	function setBlock(){
@@ -62,8 +63,7 @@ var maps = {
 		SRC : 'url(images/SienaGorge.png)',
 		TD_SIZE : 11,
 		TR_SIZE : 15,
-		LEFT:318,
-		TOP:364,
+		MAP_OFFSET : { left : 318, top : 364 },
 		BLOCK : [ [0,0],[0,1],[0,9],[0,10],[1,0],[1,1],[2,1],[3,6],[3,10],[4,0],[4,10],[5,0],[5,1],[5,10],[6,0],[6,1],[7,4],[9,0],[10,0],[10,7],[10,8],[10,9],[10,10],[11,0],[11,1],[11,2],[11,7],[11,8],[11,9],[11,10],[12,0], [12,1],[12,2],[12,8],[12,9],[12,10],[13,0],[13,1],[13,2],[13,7],[13,8],[13,9],[13,10],[14,0],[14,1],[14,2],[14,3],[14,4],[14,8],[14,9],[14,10] ],
 		ELEVATION : {
 			ELEVATION_1 : [ [10,1],[10,2],[10,6] ],

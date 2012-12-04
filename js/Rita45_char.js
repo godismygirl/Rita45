@@ -1,5 +1,6 @@
 function loadChar(sMapID){
-	var char = chars[sMapID];	
+	var char = chars[sMapID];
+	var grid = document.getElementById('ACTION_GRID');	
 	var ally = {
 		setPosition : function(){
 			var actionId,position,instance;
@@ -8,11 +9,11 @@ function loadChar(sMapID){
 				position = char.ally[i].position;
 				instance = DATA.action[actionId].getInstance(char.ally[i].face);
 
-				instance.style.left = 50 + 'px';
-				instance.style.top = 50 + 'px';
-				DATA.html.layer_act.appendChild(instance);
-
+				grid.rows[position[0]].cells[position[1]].appendChild(instance);
+				instance.style.left = DATA.action[actionId].offset.left + 'px';
+				instance.style.top = DATA.action[actionId].offset.top + 'px';
 			}
+
 		},
 		setAttr : function(){
 
@@ -44,13 +45,13 @@ var chars = {
 			{
 				partyId : 'N01',
 				face : 'up',
-				position : [13,4]
+				position : [13,3]
 			},
 
 			{
 				partyId : 'N02',
 			 	face : 'up',
-				position : [12,5]
+				position : [14,6]
 			}
 		],
 
