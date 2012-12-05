@@ -239,7 +239,7 @@ DATA.action = {
 			
 			switch (face){
 				case 'up' : 
-					div.style.backgroundPosition = '-142px -362px'
+					div.style.backgroundPosition = '-142px -360px'
 					break
 				case 'down' : 
 					div.style.backgroundPosition = '-142px -66px'

@@ -22,8 +22,8 @@ function loadMap(sMapID){
 			grid.appendChild(tr.cloneNode(true));
 		}
 		DATA.html.layer_act.appendChild(grid)
-		DATA.html.layer_act.style.left = map.MAP_OFFSET.left + 'px';
-		DATA.html.layer_act.style.top = map.MAP_OFFSET.top + 'px';
+		grid.style.marginLeft = map.MAP_OFFSET.left + 'px';
+		grid.style.marginTop = map.MAP_OFFSET.top + 'px';
 	}
 
 	function setBlock(){
@@ -79,6 +79,18 @@ var maps = {
 			ELEVATION_11 : [ [0,6],[0,7],[1,6],[1,7],[1,8],[1,9],[1,10],[2,2],[2,3],[2,4],[2,5],[2,9],[2,10] ],
 			ELEVATION_12 : [ [0,8],[0,9],[0,10],[1,2],[1,3] ],
 			ELEVATION_13 : [ [0,2],[0,3],[0,4],[0,5],[1,4],[1,5] ]
+		},
+		getPosition : function(cellPos){ //format [tr_index, cell_index]
+			var grid = document.getElementById('ACTION_GRID');
+			console.log( grid.rows[cellPos[0]].cells[cellPos[1]].offsetLeft );
+			console.log( grid.rows[cellPos[0]].cells[cellPos[1]].offsetTop );
+			var posLeft = grid.rows[cellPos[0]].cells[cellPos[1]].offsetLeft + ( 14 - cellPos[0] );
+			var posTop = grid.rows[cellPos[0]].cells[cellPos[1]].offsetTop;
+			console.log(posLeft+'/'+posTop)
+			return {
+				left : posLeft,
+				top : posTop
+			};
 		}
 	}
 }

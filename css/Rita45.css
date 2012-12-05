@@ -46,7 +46,7 @@ table{border-collapse: collapse;}
 	transform:rotate(-26deg) skewX(38deg);
 	-ms-transform:rotate(-26deg) skewX(38deg); /* IE 9 */
 	-moz-transform:rotate(-26deg) skewX(38deg); /* Firefox */
-	-webkit-transform:rotate(-26deg) skewX(38deg); /* Safari and Chrome */
+	/-webkit-transform:rotate(-26deg) skewX(38deg); /* Safari and Chrome */
 	-o-transform:rotate(-26deg) skewX(38deg); /* Opera */
 }
 #LAYER_ACT td{
@@ -54,14 +54,6 @@ table{border-collapse: collapse;}
 	width:35px;
 	height:27px;
 	border:1px solid transparent;
-}
-#LAYER_ACT td div{
-	position: absolute;
-	transform:skewX(-38deg) rotate(26deg);
-	-ms-transform:skewX(-38deg) rotate(26deg); /* IE 9 */
-	-moz-transform:skewX(-38deg) rotate(26deg); /* Firefox */
-	-webkit-transform: skewX(-38deg) rotate(26deg); /* Safari and Chrome */
-	-o-transform:skewX(-38deg) rotate(26deg); /* Opera */
 }
 
 [class*="ELEVATION"]{

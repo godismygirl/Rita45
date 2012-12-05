@@ -8,10 +8,11 @@ function loadChar(sMapID){
 				actionId = party[char.ally[i].partyId].action_ID;
 				position = char.ally[i].position;
 				instance = DATA.action[actionId].getInstance(char.ally[i].face);
+				DATA.html.layer_act.appendChild(instance);
 
-				grid.rows[position[0]].cells[position[1]].appendChild(instance);
-				instance.style.left = DATA.action[actionId].offset.left + 'px';
-				instance.style.top = DATA.action[actionId].offset.top + 'px';
+				position = maps[sMapID].getPosition(position);
+				instance.style.left = position.left + 'px';
+				instance.style.top = position.top + 'px';
 			}
 
 		},
@@ -45,7 +46,7 @@ var chars = {
 			{
 				partyId : 'N01',
 				face : 'up',
-				position : [13,3]
+				position : [0,2]
 			},
 
 			{
