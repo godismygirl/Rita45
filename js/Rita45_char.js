@@ -48,12 +48,54 @@ var chars = {
 				face : 'up',
 				position : [0,2]
 			},
+			{
+				partyId : 'N01',
+				face : 'up',
+				position : [0,3]
+			},
+			{
+				partyId : 'N01',
+				face : 'up',
+				position : [0,4]
+			},
+			{
+				partyId : 'N01',
+				face : 'up',
+				position : [1,3]
+			},
+			{
+				partyId : 'N01',
+				face : 'up',
+				position : [1,4]
+			},
 
 			{
 				partyId : 'N02',
 			 	face : 'up',
-				position : [14,6]
+				position : [2,3]
+			},
+			{
+				partyId : 'N02',
+			 	face : 'up',
+				position : [3,3]
+			},
+			{
+				partyId : 'N02',
+			 	face : 'up',
+				position : [3,4]
+			},
+
+			{
+				partyId : 'N02',
+			 	face : 'up',
+				position : [3,5]
+			},
+			{
+				partyId : 'N02',
+			 	face : 'up',
+				position : [3,6]
 			}
+			
 		],
 
 		npc : [],

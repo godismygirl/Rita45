@@ -35,13 +35,17 @@ function loadMap(sMapID){
 	}
 
 	function setElevation(){
+		var index = 1;
 		for( var level in map.ELEVATION ){
 			var arr = map.ELEVATION[level];
 			for(var i = 0, l = arr.length; i<l; i++){
 				//console.log(i+'/'+arr[i][0]+'/'+arr[i][1])
 				var lvlCell =  grid.rows[arr[i][0]].cells[arr[i][1]];
+				lvlCell.style.bottom = 7.6*index + 'px';
+				lvlCell.style.left = 16.5*index + 'px';
 				addClass(lvlCell,level);
 			}
+			index ++;
 		}
 	}
 
@@ -63,7 +67,7 @@ var maps = {
 		SRC : 'url(images/SienaGorge.png)',
 		TD_SIZE : 11,
 		TR_SIZE : 15,
-		MAP_OFFSET : { left : 318, top : 364 },
+		MAP_OFFSET : { left : 88, top : 542 },
 		BLOCK : [ [0,0],[0,1],[0,9],[0,10],[1,0],[1,1],[2,1],[3,6],[3,10],[4,0],[4,10],[5,0],[5,1],[5,10],[6,0],[6,1],[7,4],[9,0],[10,0],[10,7],[10,8],[10,9],[10,10],[11,0],[11,1],[11,2],[11,7],[11,8],[11,9],[11,10],[12,0], [12,1],[12,2],[12,8],[12,9],[12,10],[13,0],[13,1],[13,2],[13,7],[13,8],[13,9],[13,10],[14,0],[14,1],[14,2],[14,3],[14,4],[14,8],[14,9],[14,10] ],
 		ELEVATION : {
 			ELEVATION_1 : [ [10,1],[10,2],[10,6] ],
@@ -81,11 +85,12 @@ var maps = {
 			ELEVATION_13 : [ [0,2],[0,3],[0,4],[0,5],[1,4],[1,5] ]
 		},
 		getPosition : function(cellPos){ //format [tr_index, cell_index]
-			var grid = document.getElementById('ACTION_GRID');
-			console.log( grid.rows[cellPos[0]].cells[cellPos[1]].offsetLeft );
-			console.log( grid.rows[cellPos[0]].cells[cellPos[1]].offsetTop );
-			var posLeft = grid.rows[cellPos[0]].cells[cellPos[1]].offsetLeft + ( 14 - cellPos[0] );
-			var posTop = grid.rows[cellPos[0]].cells[cellPos[1]].offsetTop;
+			//var grid = document.getElementById('ACTION_GRID');
+			var refCell = document.getElementById('ACTION_GRID').rows[cellPos[0]].cells[cellPos[1]];
+			console.log( refCell.offsetLeft + '/'+refCell.style.left );
+
+			var posLeft = refCell.offsetLeft  + cellPos[0]*80 -230 ;
+			var posTop = refCell.offsetTop - cellPos[1]*22 -65 ;
 			console.log(posLeft+'/'+posTop)
 			return {
 				left : posLeft,
