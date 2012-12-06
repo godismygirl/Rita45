@@ -52,6 +52,22 @@ table{border-collapse: collapse;}
 	-webkit-transform:skew(64deg, -27deg); /* Safari and Chrome */
 	-o-transform:rotate(-26deg) skewX(37deg); /* Opera */
 }
+table tr:nth-child(even) td:nth-child(even){
+	background-color: red;
+	opacity: 0.5;
+}
+table tr:nth-child(even) td:nth-child(odd){
+	background-color: blue;
+	opacity: 0.5;
+}
+table tr:nth-child(odd) td:nth-child(odd){
+	background-color: red;
+	opacity: 0.5;
+}
+table tr:nth-child(odd) td:nth-child(even){
+	background-color: blue;
+	opacity: 0.5;
+}
 #LAYER_ACT td{
 	position: relative;
 	width:32px;
@@ -60,6 +76,6 @@ table{border-collapse: collapse;}
 
 [class*="ELEVATION"]{
 	position: relative;
-	background-color: red;
-	opacity: 0.5;
+	/background-color: red;
+	/opacity: 0.5;
 }

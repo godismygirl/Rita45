@@ -22,8 +22,8 @@ function loadMap(sMapID){
 			grid.appendChild(tr.cloneNode(true));
 		}
 		DATA.html.layer_act.appendChild(grid)
-		grid.style.marginLeft = map.MAP_OFFSET.left + 'px';
-		grid.style.marginTop = map.MAP_OFFSET.top + 'px';
+		DATA.html.layer_act.style.left = map.MAP_OFFSET.left + 'px';
+		DATA.html.layer_act.style.top = map.MAP_OFFSET.top + 'px';
 	}
 
 	function setBlock(){
@@ -41,9 +41,14 @@ function loadMap(sMapID){
 			for(var i = 0, l = arr.length; i<l; i++){
 				//console.log(i+'/'+arr[i][0]+'/'+arr[i][1])
 				var lvlCell =  grid.rows[arr[i][0]].cells[arr[i][1]];
+				
+				addClass(lvlCell,level);
+				setData(lvlCell,'elevation',index);
+				setData(lvlCell,'originPosition',{left:lvlCell.offsetLeft, top:lvlCell.offsetTop});
+				setData(lvlCell,'preLeft',lvlCell.offsetLeft);
+				setData(lvlCell,'preTop',lvlCell.offsetTop);
 				lvlCell.style.bottom = 7.6*index + 'px';
 				lvlCell.style.left = 16.5*index + 'px';
-				addClass(lvlCell,level);
 			}
 			index ++;
 		}
@@ -85,16 +90,22 @@ var maps = {
 			ELEVATION_13 : [ [0,2],[0,3],[0,4],[0,5],[1,4],[1,5] ]
 		},
 		getPosition : function(cellPos){ //format [tr_index, cell_index]
-			//var grid = document.getElementById('ACTION_GRID');
 			var refCell = document.getElementById('ACTION_GRID').rows[cellPos[0]].cells[cellPos[1]];
-			console.log( refCell.offsetLeft + '/'+refCell.style.left );
+			var originPosition = getData(refCell,'originPosition');
+			var elevation = getData(refCell,'elevation');
+			var left,top;
+			//必须这种写法，因为 0||-21 结果会是-21 0相当于false，因而会导致originPosition.left||refCell.offsetLeft 的结果不正确
+			if(originPosition){
+				left = originPosition.left;
+				top = originPosition.top;
+			}else{
+				left = refCell.offsetLeft;
+				top = refCell.offsetTop;
+			}
 
-			var posLeft = refCell.offsetLeft  + cellPos[0]*80 -230 ;
-			var posTop = refCell.offsetTop - cellPos[1]*22 -65 ;
-			console.log(posLeft+'/'+posTop)
 			return {
-				left : posLeft,
-				top : posTop
+				left : left  + cellPos[0]*32.7 + (elevation||0) ,
+				top : top - cellPos[1]*16.2 - (elevation||0)*16.2
 			};
 		}
 	}
