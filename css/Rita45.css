@@ -46,7 +46,7 @@ table{border-collapse: collapse;}
 	transform:rotate(-26deg) skewX(38deg);
 	-ms-transform:rotate(-26deg) skewX(38deg); /* IE 9 */
 	-moz-transform:rotate(-26deg) skewX(38deg); /* Firefox */
-	/-webkit-transform:rotate(-26deg) skewX(38deg); /* Safari and Chrome */
+	-webkit-transform:rotate(-26deg) skewX(38deg); /* Safari and Chrome */
 	-o-transform:rotate(-26deg) skewX(38deg); /* Opera */
 }
 #LAYER_ACT td{
