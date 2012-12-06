@@ -230,8 +230,8 @@ DATA.action = {
 	C001 : {
 		src : 'url(images/Marche.png)',
 		charOffset : {
-			left : 18,
-			top : -55
+			top : -55,
+			left : 18
 		},
 		getInstance : function(face){
 			var div = document.createElement('div');
