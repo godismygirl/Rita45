@@ -11,8 +11,8 @@ function loadChar(sMapID){
 				DATA.html.layer_act.appendChild(instance);
 
 				position = maps[sMapID].getPosition(position);
-				instance.style.left = position.left + 'px';
-				instance.style.top = position.top + 'px';
+				instance.style.left = position.left + DATA.action[actionId].charOffset.left + 'px';
+				instance.style.top = position.top + DATA.action[actionId].charOffset.top + 'px';
 			}
 
 		},
@@ -70,30 +70,100 @@ var chars = {
 			},
 
 			{
-				partyId : 'N02',
+				partyId : 'N01',
 			 	face : 'up',
 				position : [2,3]
 			},
 			{
-				partyId : 'N02',
+				partyId : 'N01',
 			 	face : 'up',
 				position : [3,3]
 			},
 			{
-				partyId : 'N02',
+				partyId : 'N01',
 			 	face : 'up',
 				position : [3,4]
 			},
 
 			{
-				partyId : 'N02',
+				partyId : 'N01',
 			 	face : 'up',
 				position : [3,5]
 			},
 			{
-				partyId : 'N02',
+				partyId : 'N01',
 			 	face : 'up',
 				position : [3,6]
+			},
+			{
+				partyId : 'N01',
+			 	face : 'up',
+				position : [4,3]
+			},
+			{
+				partyId : 'N01',
+			 	face : 'up',
+				position : [5,3]
+			},
+			{
+				partyId : 'N01',
+			 	face : 'up',
+				position : [6,3]
+			},
+			{
+				partyId : 'N01',
+			 	face : 'up',
+				position : [0,0]
+			},
+			{
+				partyId : 'N01',
+			 	face : 'up',
+				position : [0,1]
+			},
+			{
+				partyId : 'N01',
+			 	face : 'up',
+				position : [1,10]
+			},
+			{
+				partyId : 'N01',
+			 	face : 'up',
+				position : [14,7]
+			},
+			{
+				partyId : 'N01',
+			 	face : 'up',
+				position : [12,7]
+			},
+			{
+				partyId : 'N01',
+			 	face : 'up',
+				position : [10,7]
+			},
+			{
+				partyId : 'N01',
+			 	face : 'up',
+				position : [8,7]
+			},
+			{
+				partyId : 'N01',
+			 	face : 'up',
+				position : [6,7]
+			},
+			{
+				partyId : 'N01',
+			 	face : 'up',
+				position : [4,7]
+			},
+			{
+				partyId : 'N01',
+			 	face : 'up',
+				position : [2,7]
+			},
+			{
+				partyId : 'N01',
+			 	face : 'up',
+				position : [0,7]
 			}
 			
 		],
