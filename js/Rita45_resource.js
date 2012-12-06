@@ -229,6 +229,10 @@ DATA.action = {
 	//citizen
 	C001 : {
 		src : 'url(images/Marche.png)',
+		charOffset : {
+			left : 18,
+			top : -55
+		},
 		getInstance : function(face){
 			var div = document.createElement('div');
 			div.style.id = 'C001';
@@ -262,10 +266,6 @@ DATA.action = {
 			div.style.backgroundPosition = '-4px -428px';
 			return div;
 		},
-		charOffset : {
-			left : 18,
-			top : -55
-		},
 		setStatus : function(status){
 			switch (status){
 				case 'hit' :
@@ -287,6 +287,10 @@ DATA.action = {
 	},
 	C002 : {
 		src : 'url(images/BlackMage.png)',
+		charOffset : {
+			left : 0,
+			top : -48
+		},
 		getInstance : function(face){
 			var div = document.createElement('div');
 			div.style.id = 'C002';
@@ -319,11 +323,7 @@ DATA.action = {
 			div.style.backgroundImage = DATA.action.C002.src;
 			div.style.backgroundPosition = '-6px -430px';
 			return div;
-		},
-		charOffset : {
-			left : 0,
-			top : -48
-		},
+		}
 
 	},
 	//moster
