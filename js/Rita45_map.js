@@ -7,23 +7,23 @@ function loadMap(sMapID){
 		SRC : 'url(images/error.png)'
 	}
 
-	DATA.html.frame.style.width = map.WIDTH + 'px' || defaults.width + 'px';
-	DATA.html.frame.style.height = map.HEIGHT + 'px' || defaults.height + 'px';
+	DATA.html.frame.style.width = map.DIM[0] + 'px' || defaults.width + 'px';
+	DATA.html.frame.style.height = map.DIM[1] + 'px' || defaults.height + 'px';
 
 	function crLayerAct(){
 		grid = document.createElement('table');
 		grid.id = "ACTION_GRID";
 		var td = document.createElement('td');
 		var tr = document.createElement('tr');
-		for(var i = 0,len = map.TD_SIZE; i < len; i++){
+		for(var i = 0,len = map.SIZE[1]; i < len; i++){
 			tr.appendChild(td.cloneNode(true));
 		}
-		for(var i = 0,len = map.TR_SIZE; i < len; i++){
+		for(var i = 0,len = map.SIZE[0]; i < len; i++){
 			grid.appendChild(tr.cloneNode(true));
 		}
 		DATA.html.layer_act.appendChild(grid)
-		DATA.html.layer_act.style.left = map.MAP_OFFSET.left + 'px';
-		DATA.html.layer_act.style.top = map.MAP_OFFSET.top + 'px';
+		DATA.html.layer_act.style.left = map.OFFSET[0] + 'px';
+		DATA.html.layer_act.style.top = map.OFFSET[1] + 'px';
 	}
 
 	function setBlock(){
@@ -40,8 +40,7 @@ function loadMap(sMapID){
 			var arr = map.ELEVATION[level];
 			for(var i = 0, l = arr.length; i<l; i++){
 				//console.log(i+'/'+arr[i][0]+'/'+arr[i][1])
-				var lvlCell =  grid.rows[arr[i][0]].cells[arr[i][1]];
-				
+				var lvlCell =  grid.rows[arr[i][0]].cells[arr[i][1]];	
 				addClass(lvlCell,level);
 				setData(lvlCell,'elevation',index);
 				setData(lvlCell,'originPosition',{left:lvlCell.offsetLeft, top:lvlCell.offsetTop});
@@ -54,25 +53,48 @@ function loadMap(sMapID){
 		}
 	}
 
+	function setCharcter(){
+		function loadAlly(){
+			var target,position,instance;
+			for(var i=0, l=map.CHARS.ALLY.length; i<l; i++ ){
+				target = map.CHARS.ALLY[i];
+				instance = DATA.action[party[target.id].action_ID].getInstance(target.face);
+				position = instance.getPosition(target.position);
+				instance.style.left = position.left + 'px';
+				instance.style.top = position.top + 'px';
+				instance.id = party[target.id].name;
+
+				DATA.html.layer_act.appendChild(instance);
+				instance.walk();
+				setTimeout(instance.stand, 3000);
+				setTimeout(instance.jump, 3500)
+			}
+		}
+		function loadEnemy(){
+
+		}
+		loadAlly();
+		loadEnemy();
+	}
+
 	function init(){
-		DATA.html.layer_bg.style.width = map.WIDTH + 'px' || defaults.width + 'px';
-		DATA.html.layer_bg.style.height = map.HEIGHT + 'px' || defaults.height + 'px';
+		DATA.html.layer_bg.style.width = map.DIM[0] + 'px' || defaults.width + 'px';
+		DATA.html.layer_bg.style.height = map.DIM[1] + 'px' || defaults.height + 'px';
 		DATA.html.layer_bg.style.backgroundImage = map.SRC || defaults.SRC;
 		crLayerAct();
 		setBlock();
 		setElevation();
+		setCharcter();
 	}
 
 	init();
 }
 var maps = {
-	SienaGorge : {
-		WIDTH : 1000,
-		HEIGHT : 800,
+	SienaGorge : {	
 		SRC : 'url(images/SienaGorge.png)',
-		TD_SIZE : 11,
-		TR_SIZE : 15,
-		MAP_OFFSET : { left : 88, top : 542 },
+		DIM : [1000,800],
+		SIZE : [15,11],
+		OFFSET : [88,542],
 		BLOCK : [ [0,0],[0,1],[0,9],[0,10],[1,0],[1,1],[2,1],[3,6],[3,10],[4,0],[4,10],[5,0],[5,1],[5,10],[6,0],[6,1],[7,4],[9,0],[10,0],[10,7],[10,8],[10,9],[10,10],[11,0],[11,1],[11,2],[11,7],[11,8],[11,9],[11,10],[12,0], [12,1],[12,2],[12,8],[12,9],[12,10],[13,0],[13,1],[13,2],[13,7],[13,8],[13,9],[13,10],[14,0],[14,1],[14,2],[14,3],[14,4],[14,8],[14,9],[14,10] ],
 		ELEVATION : {
 			ELEVATION_1 : [ [10,1],[10,2],[10,6] ],
@@ -89,24 +111,112 @@ var maps = {
 			ELEVATION_12 : [ [0,8],[0,9],[0,10],[1,2],[1,3] ],
 			ELEVATION_13 : [ [0,2],[0,3],[0,4],[0,5],[1,4],[1,5] ]
 		},
-		getPosition : function(cellPos){ //format [tr_index, cell_index]
-			var refCell = document.getElementById('ACTION_GRID').rows[cellPos[0]].cells[cellPos[1]];
-			var originPosition = getData(refCell,'originPosition');
-			var elevation = getData(refCell,'elevation');
-			var left,top;
-			//必须这种写法，因为 0||-21 结果会是-21 0相当于false，因而会导致originPosition.left||refCell.offsetLeft 的结果不正确
-			if(originPosition){
-				left = originPosition.left;
-				top = originPosition.top;
-			}else{
-				left = refCell.offsetLeft;
-				top = refCell.offsetTop;
-			}
+		CHARS : {
+			ALLY : [
+			/*
+				{
+					id : 'N01',
+					face : 'up',
+					position : [0,2]
+				},
+				{
+					id : 'N01',
+					face : 'up',
+					position : [0,3]
+				},
+				{
+					id : 'N01',
+					face : 'up',
+					position : [0,4]
+				},
+				{
+					id : 'N01',
+					face : 'up',
+					position : [1,3]
+				},
+				{
+					id : 'N01',
+					face : 'up',
+					position : [1,4]
+				},
 
-			return {
-				left : left  + cellPos[0]*32.7 + (elevation||0) ,
-				top : top - cellPos[1]*16.2 - (elevation||0)*16.2
-			};
+				{
+					id : 'N01',
+				 	face : 'up',
+					position : [2,3]
+				},
+				{
+					id : 'N01',
+				 	face : 'up',
+					position : [3,3]
+				},
+				{
+					id : 'N01',
+				 	face : 'up',
+					position : [3,4]
+				},
+
+				{
+					id : 'N01',
+				 	face : 'up',
+					position : [3,5]
+				},
+				{
+					id : 'N01',
+				 	face : 'up',
+					position : [3,6]
+				},
+				{
+					id : 'N01',
+				 	face : 'up',
+					position : [4,3]
+				},
+				{
+					id : 'N01',
+				 	face : 'up',
+					position : [5,3]
+				},
+				{
+					id : 'N01',
+				 	face : 'up',
+					position : [6,3]
+				},
+				{
+					id : 'N01',
+				 	face : 'up',
+					position : [0,0]
+				},
+				{
+					id : 'N01',
+				 	face : 'up',
+					position : [0,1]
+				},
+				{
+					id : 'N01',
+				 	face : 'up',
+					position : [1,10]
+				},
+				{
+					id : 'N01',
+				 	face : 'up',
+					position : [14,7]
+				},
+				*/
+				{
+					id : 'N01',
+				 	face : 'up',
+					position : [12,7]
+				}
+			],
+			ENEMY : [
+				{
+					id : 'M001',
+					name : 'Tata',
+					position : [2,4],
+					level : 5,
+					skill : ['SK001','SK002']
+				}
+			]
 		}
 	}
 }

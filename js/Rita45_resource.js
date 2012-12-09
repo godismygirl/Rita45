@@ -233,57 +233,105 @@ DATA.action = {
 			top : -55,
 			left : 18
 		},
-		getInstance : function(face){
-			var div = document.createElement('div');
-			div.style.id = 'C001';
-			div.style.width = 32 + 'px';
-			div.style.height = 62 + 'px';
-			div.style.backgroundImage = DATA.action.C001.src;
-			
-			switch (face){
-				case 'up' : 
-					div.style.backgroundPosition = '-142px -360px'
-					break
-				case 'down' : 
-					div.style.backgroundPosition = '-142px -66px'
-					break 
-				case 'left' : 
-					div.style.backgroundPosition = '-142px -152px'
-					break
-				case 'right' : 
-					div.style.backgroundPosition = '-142px -256px'
-					break
-				default : 
+		getInstance : function(dir){
+			var Marche = document.createElement('div');
+			Marche.style.width = 32 + 'px';
+			Marche.style.height = 62 + 'px';
+			Marche.style.backgroundImage = DATA.action.C001.src;
+
+			Marche.status = {
+				hit : false,
+				hurt : false,
+				dead : false,
+				onWalk : false,
+				onJump : false,
+				onAttack : false
 			}
 
-			return div; 
+			Marche.getPosition = function(cellPos){ //format [tr_index, cell_index]
+				var refCell = document.getElementById('ACTION_GRID').rows[cellPos[0]].cells[cellPos[1]];
+				var originPosition = getData(refCell,'originPosition');
+				var elevation = getData(refCell,'elevation');
+				var left,top;
+				//必须这种写法，因为 0||-21 结果会是-21 0相当于false，因而会导致originPosition.left||refCell.offsetLeft 的结果不正确
+				if(originPosition){
+					left = originPosition.left;
+					top = originPosition.top;
+				}else{
+					left = refCell.offsetLeft;
+					top = refCell.offsetTop;
+				}
+
+				return {
+					left : left  + cellPos[0]*32.7 + (elevation||0) + 18 ,
+					top : top - cellPos[1]*16.2 - (elevation||0)*16.2 -55
+				};
+			}
+
+			Marche.moveTo = function(){
+				
+			}
+
+			Marche.walk = function(){
+				Marche.style.backgroundPositionX = '-102px'; 
+				var walking = function(){
+					Marche.style.backgroundPositionX = Marche.style.backgroundPositionX === '-102px'? '-182px':'-102px';
+				}
+				Marche.onWalk = setInterval(walking, 500);
+			}
+
+			Marche.turn = function(face){
+				switch (face){
+					case 'up' : 
+						Marche.style.backgroundPosition = '-142px -360px'
+						break
+					case 'down' : 
+						Marche.style.backgroundPosition = '-142px -66px'
+						break 
+					case 'left' : 
+						Marche.style.backgroundPosition = '-142px -152px'
+						break
+					case 'right' : 
+						Marche.style.backgroundPosition = '-142px -256px'
+						break
+					default : 
+				}
+			}
+
+			Marche.jump = function(face){
+				Marche.style.backgroundPositionX = '-222px'; 
+				setTimeout(function(){
+					Marche.style.backgroundPositionX = '-262px';  
+				},500);
+				setTimeout(function(){
+					Marche.style.backgroundPositionX = '-302px'; 
+				},1400);
+				setTimeout(Marche.stand,1900);
+			}
+
+			Marche.setStatus = function(status){
+
+			}
+
+			Marche.stand = function(){
+				if(Marche.onWalk){
+					clearInterval(Marche.onWalk);
+					Marche.onWalk = false;
+				}
+				Marche.style.backgroundPositionX = '-142px';
+			}
+
+			Marche.turn(dir);
+			return Marche; 
 		},
 		getAvatar : function(){
-			var div = document.createElement('div');
-			div.style.width = 94 + 'px';
-			div.style.height = 128 + 'px';
-			div.style.backgroundImage = DATA.action.C001.src;
-			div.style.backgroundPosition = '-4px -428px';
-			return div;
-		},
-		setStatus : function(status){
-			switch (status){
-				case 'hit' :
-					break
-				case 'hurt' : 
-					break
-				case 'die' :
-					break
-			}
-		}, 
-		walk : function(face){
-
-		},
-		jump : function(face){
-
+			var avatar = document.createElement('div');
+			avatar.style.width = 94 + 'px';
+			avatar.style.height = 128 + 'px';
+			avatar.style.backgroundImage = DATA.action.C001.src;
+			avatar.style.backgroundPosition = '-4px -428px';
+			return avatar;
 		}
-
-
 	},
 	C002 : {
 		src : 'url(images/BlackMage.png)',
@@ -292,37 +340,37 @@ DATA.action = {
 			top : -48
 		},
 		getInstance : function(face){
-			var div = document.createElement('div');
-			div.style.id = 'C002';
-			div.style.width = 32 + 'px';
-			div.style.height = 60 + 'px';
-			div.style.backgroundImage = DATA.action.C002.src;
+			var BlackMage = document.createElement('div');
+			BlackMage.style.id = 'C002';
+			BlackMage.style.width = 32 + 'px';
+			BlackMage.style.height = 60 + 'px';
+			BlackMage.style.backgroundImage = DATA.action.C002.src;
 			
 			switch (face){
 				case 'up' : 
-					div.style.backgroundPosition = '-44px -366px'
+					BlackMage.style.backgroundPosition = '-44px -366px'
 					break
 				case 'down' : 
-					div.style.backgroundPosition = '-44px -68px'
+					BlackMage.style.backgroundPosition = '-44px -68px'
 					break 
 				case 'left' : 
-					div.style.backgroundPosition = '-44px -154px'
+					BlackMage.style.backgroundPosition = '-44px -154px'
 					break
 				case 'right' : 
-					div.style.backgroundPosition = '-44px -258px'
+					BlackMage.style.backgroundPosition = '-44px -258px'
 					break
 				default : 
 			}
 
-			return div; 
+			return BlackMage; 
 		},
 		getAvatar : function(sFace){
-			var div = document.createElement('div');
-			div.style.width = 126 + 'px';
-			div.style.height = 176 + 'px';
-			div.style.backgroundImage = DATA.action.C002.src;
-			div.style.backgroundPosition = '-6px -430px';
-			return div;
+			var BlackMage = document.createElement('div');
+			BlackMage.style.width = 126 + 'px';
+			BlackMage.style.height = 176 + 'px';
+			BlackMage.style.backgroundImage = DATA.action.C002.src;
+			BlackMage.style.backgroundPosition = '-6px -430px';
+			return BlackMage;
 		}
 
 	},
