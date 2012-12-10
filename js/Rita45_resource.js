@@ -7,6 +7,8 @@ var party = {
 		job : 'Fighter',
 		name : 'Marche',
 		level : 3,
+		HP : 26,
+		MP : 10,
 		EXP:45,
 		ATK : 12,
 		DEF : 6,
@@ -29,6 +31,8 @@ var party = {
 		job : 'Black Mage',
 		name : 'JK.Love',
 		level : 4,
+		HP : 22,
+		MP : 18,
 		EXP:80,
 		ATK : 8,
 		DEF : 4,
@@ -229,10 +233,6 @@ DATA.action = {
 	//citizen
 	C001 : {
 		src : 'url(images/Marche.png)',
-		charOffset : {
-			top : -55,
-			left : 18
-		},
 		getInstance : function(dir){
 			var Marche = document.createElement('div');
 			Marche.style.width = 32 + 'px';
@@ -268,8 +268,45 @@ DATA.action = {
 				};
 			}
 
-			Marche.moveTo = function(){
-				
+			Marche.moveTo = function(cellPos){
+				if(Marche.currentCell){
+					alert(yes);
+				}
+			}
+
+			Marche.crMoveArea = function(){
+				var currentCell = this.currentCell;
+				var move = party[this.partyId].MOVE;
+				var map = document.getElementById('ACTION_GRID');
+				var boundry = {maxX:map.rows.length-1, maxY:map.rows[0].cells.length-1};
+				console.log(currentCell);
+				console.log(move);
+				console.log(boundry);
+				function checkValid(x,y){
+					if(x<0||y<0||x>boundry.maxX||y>boundry.maxY){
+						console.log('false:'+x+','+y)
+						return false;
+					}else{
+						return true;
+
+					}	
+				}
+				function checkReachable(x,y){
+					return true;
+				}
+				for( var i = currentCell[0] - move; i <= currentCell[0] + move; i++ ){
+					for( var j = currentCell[1] - move; j <= currentCell[1] + move; j++ ){
+						if(checkValid(i,j)){
+							if(Math.abs(i-currentCell[0]) + Math.abs(j-currentCell[1]) <= move){
+								console.log(i+','+j)
+								if(checkReachable(i,j)){
+									targetCell = map.rows[i].cells[j];
+									addClass(targetCell,'moveable');
+								}
+							}	
+						}
+					}
+				}
 			}
 
 			Marche.walk = function(){

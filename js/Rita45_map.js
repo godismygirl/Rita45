@@ -63,9 +63,13 @@ function loadMap(sMapID){
 				instance.style.left = position.left + 'px';
 				instance.style.top = position.top + 'px';
 				instance.id = party[target.id].name;
+				//set important prop
+				instance.currentCell = target.position; // record position in format [tr_index,td_index]
+				instance.partyId = target.id;
 
 				DATA.html.layer_act.appendChild(instance);
 				instance.walk();
+				instance.addEventListener('click', instance.crMoveArea);
 				setTimeout(instance.stand, 3000);
 				setTimeout(instance.jump, 3500)
 			}
@@ -205,7 +209,7 @@ var maps = {
 				{
 					id : 'N01',
 				 	face : 'up',
-					position : [12,7]
+					position : [7,6]
 				}
 			],
 			ENEMY : [
